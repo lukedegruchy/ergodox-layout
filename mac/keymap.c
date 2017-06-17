@@ -52,7 +52,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |-----------+------+------+------+------+------| CTRL |           | Opt  |------+------+------+------+------+-----------|
  * |   SHIFT   |   Z  |   X  |   C  |   V  |   B  | SPC  |           | SPC  |   N  |   M  |   ,  |   .  |   /  |   SHIFT   |
  * `-----------+------+------+------+------+-------------'           `-------------+------+------+------+------+-----------'
- *     |  Opt  |   '  |SF+CTL| Left | Right|                                       | Down |  Up  |SF+CTL|S+C+SP|  Opt  |
+ *     |  Opt  |   '  |SF+GUI| Left | Right|                                       | Down |  Up  |SF+GUI|S+C+SP|  Opt  |
  *     `-----------------------------------'                                       `-----------------------------------'
  *                                         ,-------------.           ,-------------.
  *                                         | CTRL |  GUI |           | GUI  | CTRL |
@@ -81,7 +81,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                     OSL(1),         KC_Y,       KC_U,   KC_I,     KC_O,             KC_P,                   KC_MINUS,
                                                                     SFT_T(KC_H),KC_J,   KC_K,     KC_L,             KC_SCOLON,              KC_DQUO,
                                                     RALT(KC_SPACE), KC_N,       KC_M,   KC_COMMA, KC_DOT,           KC_SLASH,               F(F_SFT_R), 
-                                                                                KC_DOWN,KC_UP,    RSFT(KC_RGUI),    LGUI(LSFT(KC_SPACE)),   F(F_ALT_R),
+                                                                                KC_DOWN,KC_UP,    RSFT(KC_LGUI),    LGUI(LSFT(KC_SPACE)),   F(F_ALT_R),
 
                                                                     // right thumb cluster
                                                                     F(F_GUI_L), F(F_CTRL_R),
