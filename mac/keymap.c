@@ -57,9 +57,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                         ,-------------.           ,-------------.
  *                                         | CTRL |  GUI |           | GUI  | CTRL |
  *                                  ,------|------|------|           |------+------+------.
- *                                  |      |      | PgUp |           | Home |      |      |
+ *                                  |      |      | Home |           | PgUp  |      |      |
  *                                  |  SPC | BKSP |------|           |------| ESC  | ENTR |
- *                                  |      |      | PgDn |           |  End |      |      |
+ *                                  |      |      |  End |           | PgDn |      |      |
  *                                  `--------------------'           `--------------------'
  */
 
@@ -73,8 +73,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
             
                                     // left thumb cluster
                                     F(F_CTRL_L), F(F_GUI_L),
-                                                         KC_PGUP,
-                                    KC_SPACE, KC_BSPACE, KC_PGDOWN,
+                                                         KC_HOME,
+                                    KC_SPACE, KC_BSPACE, KC_END,
 
                                                     // right hand
                                                     RCTL(KC_RIGHT), KC_6,       KC_7,   KC_8,     KC_9,             KC_0,                   KC_DELETE,
@@ -85,8 +85,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
                                                                     // right thumb cluster
                                                                     F(F_GUI_L), F(F_CTRL_R),
-                                                                    KC_HOME,
-                                                                    KC_END, KC_ESC, KC_ENTER
+                                                                    KC_PGUP,
+                                                                    KC_PGDOWN, KC_ESC, KC_ENTER
         ),
 
 /* Keymap 1: Symbol Layer
