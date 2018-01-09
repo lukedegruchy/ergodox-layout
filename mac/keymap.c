@@ -1,4 +1,5 @@
-#include "ergodox.h"
+#include <stdarg.h>
+#include QMK_KEYBOARD_H
 #include "led.h"
 #include "debug.h"
 #include "action_layer.h"
@@ -32,32 +33,25 @@ enum {
   F_CTRL_R
 };
 
-// Tapdance constants
-enum {
-    CAKEWARP = 0
-};
-
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
-  // LUKETODO: tap dance layers
-  // LUKETODO:  lay out keys like Hungarian keymap (algernon)
 /* Keymap 0: Base Layer
  *
  * ,-----------------------------------------------------.           ,-----------------------------------------------------.
- * |     =     | 1  ! | 2  @ | 3  # | 4  $ | 5  % |CTL+LT|           |CTL+RT| 6  ^ | 7  & | 8  * | 9  ( | 10 ) |   DEL     |
+ * |     =     | 1  ! | 2  @ | 3  # | 4  $ | 5  % |OPT+LT|           |OPT+RT| 6  ^ | 7  & | 8  * | 9  ( | 10 ) |   DEL     |
  * |-----------+------+------+------+------+-------------|           |------+------+------+------+------+------+-----------|
  * |    TAB    |   Q  |   W  |   E  |   R  |   T  | Tap  |           |OneSht|   Y  |   U  |   I  |   O  |   P  |     -     |
- * |-----------+------+------+------+------+------|Layers|           |Symbol|------+------+------+------+------+-----------|
+ * |-----------+------+------+------+------+------|Layers|           |Symbol||------+------+------+------+------+-----------|
  * |     ~     |   A  |   S  |   D  |   F  |   G  |------|           |------|   H  |   J  |   K  |   L  |   ;  |     "     |
- * |-----------+------+------+------+------+------| CTRL |           | Opt  |------+------+------+------+------+-----------|
- * |   SHIFT   |   Z  |   X  |   C  |   V  |   B  | SPC  |           | SPC  |   N  |   M  |   ,  |   .  |   /  |   SHIFT   |
+ * |-----------+------+------+------+------+------| CTRL |           | CTRL |------+------+------+------+------+-----------|
+ * |   SHIFT   |   Z  |   X  |   C  |   V  |   B  | SPC  |           |  ,   |   N  |   M  |   ,  |   .  |   /  |   SHIFT   |
  * `-----------+------+------+------+------+-------------'           `-------------+------+------+------+------+-----------'
- *     |  Opt  |   '  |SF+GUI| Left | Right|                                       | Down |  Up  |SF+GUI|S+C+SP|  Opt  |
+ *     |  Opt  |   '  |SF+GUI| Left | Right|                                       | Down |  Up  |SF+GUI|GUISPC|  Opt  |
  *     `-----------------------------------'                                       `-----------------------------------'
  *                                         ,-------------.           ,-------------.
  *                                         | CTRL |  GUI |           | GUI  | CTRL |
  *                                  ,------|------|------|           |------+------+------.
- *                                  |      |      | Home |           | PgUp  |      |      |
+ *                                  |      |      | Home |           | PgUp |      |      |
  *                                  |  SPC | BKSP |------|           |------| ESC  | ENTR |
  *                                  |      |      |  End |           | PgDn |      |      |
  *                                  `--------------------'           `--------------------'
@@ -65,26 +59,26 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [BASE] = KEYMAP(
             // left hand
-            KC_EQUAL,       KC_1,        KC_2,         KC_3,    KC_4,    KC_5,       LCTL(KC_LEFT),
+            KC_EQUAL,       KC_1,        KC_2,         KC_3,    KC_4,    KC_5,       LALT(KC_LEFT),
             KC_TAB,         KC_Q,        KC_W,         KC_E,    KC_R,    KC_T,       OSL(2),
             KC_TILD,        KC_A,        KC_S,         KC_D,    KC_F,    SFT_T(KC_G),
             F(F_SFT_L),     KC_Z,        KC_X,         KC_C,    KC_V,    KC_B,       LCTL(KC_SPACE),
-            F(F_ALT_L),     KC_QUOTE,    LSFT(KC_LGUI),KC_LEFT, KC_RIGHT,
+            F(F_ALT_L),     KC_QUOTE,    LSFT(KC_LCTRL),KC_LEFT, KC_RIGHT,
             
                                     // left thumb cluster
-                                    F(F_CTRL_L), F(F_GUI_L),
+                                            F(F_CTRL_L), F(F_GUI_L),
                                                          KC_HOME,
                                     KC_SPACE, KC_BSPACE, KC_END,
 
                                                     // right hand
-                                                    RCTL(KC_RIGHT), KC_6,       KC_7,   KC_8,     KC_9,             KC_0,                   KC_DELETE,
-                                                    OSL(1),         KC_Y,       KC_U,   KC_I,     KC_O,             KC_P,                   KC_MINUS,
-                                                                    SFT_T(KC_H),KC_J,   KC_K,     KC_L,             KC_SCOLON,              KC_DQUO,
-                                                    RALT(KC_SPACE), KC_N,       KC_M,   KC_COMMA, KC_DOT,           KC_SLASH,               F(F_SFT_R), 
-                                                                                KC_DOWN,KC_UP,    RSFT(KC_LGUI),    LGUI(LSFT(KC_SPACE)),   F(F_ALT_R),
+                                                    RALT(KC_RIGHT), KC_6,       KC_7,   KC_8,     KC_9,             KC_0,             KC_DELETE,
+                                                    OSL(1),         KC_Y,       KC_U,   KC_I,     KC_O,             KC_P,             KC_MINUS,
+                                                                    SFT_T(KC_H),KC_J,   KC_K,     KC_L,             KC_SCOLON,        KC_DQUO,
+                                                    RCTL(KC_COMMA), KC_N,       KC_M,   KC_COMMA, KC_DOT,           KC_SLASH,         F(F_SFT_L), 
+                                                                                KC_DOWN,KC_UP,    RSFT(KC_RCTRL),   RALT(KC_SPACE),   F(F_ALT_L),
 
                                                                     // right thumb cluster
-                                                                    F(F_GUI_L), F(F_CTRL_R),
+                                                                    F(F_GUI_L), F(F_CTRL_L),
                                                                     KC_PGUP,
                                                                     KC_PGDOWN, KC_ESC, KC_ENTER
         ),
@@ -119,7 +113,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
              KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_BSLASH,
  
                     // left thumb cluster
-                    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
+                                    KC_TRANSPARENT, KC_TRANSPARENT, 
+                                                    KC_TRANSPARENT, 
+                    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
             
                             // right hand
                             KC_TRANSPARENT, KC_F6,          KC_F7,    KC_F8,      KC_F9,      KC_F10,           KC_F11, 
@@ -150,9 +146,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                         ,-------------.           ,-------------.
  *                                         |      |      |           |      |      |
  *                                  ,------|------|------|           |------+------+------.
- *                                  |      |      |      |           |      |      |      |
- *                                  |      |      |------|           |------|      |      |
- *                                  |      |      |      |           |      |      |      |
+ *                                  |      |      |VOL UP|           |PREVTR|      |      |
+ *                                  | MUTE |      |------|           |------|      |PLAY/ |
+ *                                  |      |      |VOL DN|           |NEXTTR|      |PAUSE |
  *                                  `--------------------'           `--------------------'
  */
   [MOUS] = KEYMAP(
@@ -164,7 +160,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
             KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
             
             // left thumb cluster
-            KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
+                            KC_TRANSPARENT, KC_TRANSPARENT, 
+                                            KC_AUDIO_VOL_UP, 
+            KC_AUDIO_MUTE,  KC_TRANSPARENT, KC_AUDIO_VOL_DOWN, 
             
             
             // right hand
@@ -175,11 +173,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                             KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
                                             
             // right thumb cluster
-            KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT
+            KC_TRANSPARENT, KC_TRANSPARENT, 
+            KC_MEDIA_PREV_TRACK, 
+            KC_MEDIA_NEXT_TRACK, KC_TRANSPARENT, KC_MEDIA_PLAY_PAUSE
             ),
 };
 
-// Tap dance to change layers
+// LUKETODO:  Figure out why tapdance and cake_count don't work
+/*
 void cake_count (qk_tap_dance_state_t *state, void *user_data) {
   if (state->count == 2) {         
     layer_on (SYMB);        //define double tap here
@@ -197,6 +198,7 @@ void cake_count (qk_tap_dance_state_t *state, void *user_data) {
     reset_tap_dance (state);
   }
 }
+*/
 
 const uint16_t PROGMEM fn_actions[] = {
   [F_SFT_L]  = ACTION_MODS_ONESHOT (MOD_LSFT)
@@ -208,12 +210,6 @@ const uint16_t PROGMEM fn_actions[] = {
   ,[F_ALT_R]  = ACTION_MODS_ONESHOT (MOD_RALT)
   ,[F_CTRL_L] = ACTION_MODS_ONESHOT (MOD_LCTL)
   ,[F_CTRL_R] = ACTION_MODS_ONESHOT (MOD_RCTL)
-};
-
-//Tap Dance Definitions
-qk_tap_dance_action_t tap_dance_actions[] = {
-  [CAKEWARP] = ACTION_TAP_DANCE_FN(cake_count)
-  // Other declarations would go here, separated by commas, if you have them
 };
 
 // leaving this in place for compatibilty with old keymaps cloned and re-compiled.
@@ -302,11 +298,5 @@ void matrix_scan_user(void) {
       ergodox_right_led_1_on();
       ergodox_right_led_3_set (LED_BRIGHTNESS_HI);
       ergodox_right_led_3_on();
-    }
-
-    // LUKETODO: this may no longer be needed
-    // Turn on leftmost red light when CAPSLOCK is active
-    if (host_keyboard_leds() & (1<<USB_LED_CAPS_LOCK)) {
-        ergodox_right_led_1_on();
     }
 };
