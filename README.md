@@ -7,11 +7,11 @@ The layers are both slightly different given the differences in usage of the CTR
 
 This is the Linux Base Layer:
 
-[![Base layer](images/keyboard-layout-base-linux-493afadcf9eef4d2b11fff671438bb9f.png)](http://www.keyboard-layout-editor.com/#/gists/493afadcf9eef4d2b11fff671438bb9f)
+[![Base layer](images/ergodox---lukedegruchy's-layout-linux-base-layer.png)](http://www.keyboard-layout-editor.com/#/gists/493afadcf9eef4d2b11fff671438bb9f)
 
 This is the Mac Base Layer:
 
-[![Base layer](images/keyboard-layout-base-mac-6f1b40675623764011cd6774aa91c7f2.png)](http://www.keyboard-layout-editor.com/#/gists/6f1b40675623764011cd6774aa91c7f2)
+[![Base layer](images/ergodox---lukedegruchy's-layout-mac-base-layer.png)](http://www.keyboard-layout-editor.com/#/gists/6f1b40675623764011cd6774aa91c7f2)
 
 This is the Symbol Layer for both:
 [![Symbol layer](images/keyboard-layout-symbol-93d098b79495869cb79f5d1af0afcf07.png)](http://www.keyboard-layout-editor.com/#/gists/93d098b79495869cb79f5d1af0afcf07)
