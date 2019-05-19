@@ -67,7 +67,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
             KC_LGUI,            LALT(KC_LCTRL), LSFT(KC_LCTRL),KC_LEFT, KC_RIGHT,
 
                                     // left thumb cluster
-                                    F(F_CTRL_L), F(F_ALT_L),
+
+                               LCTL_T(KC_ESCAPE), LALT_T(KC_TAB),
                                                          KC_HOME,
                                     KC_SPACE, KC_BSPACE, KC_END,
 
@@ -79,7 +80,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                                                 KC_DOWN,KC_UP,    RSFT(KC_RCTRL),   RALT(KC_RCTRL), KC_RGUI,
 
                                                                     // right thumb cluster
-                                                                    F(F_ALT_L), F(F_CTRL_L),
+                                                                    RALT_T(KC_APPLICATION), RCTL_T(KC_ENTER),
                                                                     KC_PGUP,
                                                                     KC_PGDOWN, KC_ESC, KC_ENTER
         ),
