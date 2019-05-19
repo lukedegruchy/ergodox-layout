@@ -1,4 +1,5 @@
-#include "ergodox.h"
+#include <stdarg.h>
+#include QMK_KEYBOARD_H
 #include "led.h"
 #include "debug.h"
 #include "action_layer.h"
@@ -6,8 +7,9 @@
 #include "timer.h"
 #include "keymap_plover.h"
 #include "eeconfig.h"
-#include "version.h"
 #include "wait.h"
+#include "version.h"
+#include "print.h"
 
 #define BASE 0   // default layer
 #define SYMB 1   // symbol layer   -  NumPad and symbols
@@ -56,7 +58,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                  `--------------------'           `--------------------'
  */
 
-  [BASE] = KEYMAP(
+  [BASE] = LAYOUT_ergodox(
             // left hand
             LSFT(KC_INSERT),    KC_1,           KC_2,          KC_3,    KC_4,    KC_5,       LGUI(KC_LEFT),
             KC_TILD,            KC_Q,           KC_W,          KC_E,    KC_R,    KC_T,       OSL(2),
@@ -103,7 +105,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                  |      |      |      |           |      |      |      |
  *                                  `--------------------'           `--------------------'
  */
-  [SYMB] = KEYMAP(
+  [SYMB] = LAYOUT_ergodox(
             // left hand
              KC_INSERT,      KC_F1,          KC_F2,          KC_F3,          KC_F4,      KC_F5,      KC_TRANSPARENT,
              KC_TRANSPARENT, KC_GRAVE,       KC_AT,          KC_LCBR,        KC_RCBR,    KC_PIPE,    KC_TRANSPARENT,
@@ -148,7 +150,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                  |      |      |VOL DN|           |NEXTTR|      |PAUSE |
  *                                  `--------------------'           `--------------------'
  */
-  [MOUS] = KEYMAP(
+  [MOUS] = LAYOUT_ergodox(
             // left hand
             KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
             KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
