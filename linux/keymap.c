@@ -44,7 +44,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |     ~     |   Q  |   W  |   E  |   R  |   T  |OneSht|           |OneSht|   Y  |   U  |   I  |   O  |   P  |     -     |
  * |-----------+------+------+------+------+------|Mouse |           |Symbol|------+------+------+------+------+-----------|
  * |     =     |   A  |   S  |   D  |   F  |   G  |------|           |------|   H  |   J  |   K  |   L  |   ;  |     '     |
- * |-----------+------+------+------+------+------|SHIFT |           |SHIFT |------+------+------+------+------+-----------|
+ * |-----------+------+------+------+------+------| TAB  |           | APPS |------+------+------+------+------+-----------|
  * |   SHIFT   |   Z  |   X  |   C  |   V  |   B  |      |           |      |   N  |   M  |   ,  |   .  |   /  |   SHIFT   |
  * `-----------+------+------+------+------+-------------'           `-------------+------+------+------+------+-----------'
  *     |  GUI  |CT+ALT|SF+CTL| Left | Right|                                       | Down |  Up  |SF+CTL|CT+ALT|  GUI  |
@@ -52,8 +52,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                         ,-------------.           ,-------------.
  *                                         |CT/ESC|ALT/TB|           |ALT/AP|CT/ETR|
  *                                  ,------|------|------|           |------+------+------.
- *                                  |      |      | Home |           | PgUp |      |      |
- *                                  |  SPC | BKSP |------|           |------| ESC  | ENTR |
+ *                                  |      |SHIFT | Home |           | PgUp |SHIFT |      |
+ *                                  |  SPC | ENTR |------|           |------| ESC  | BKSP |
  *                                  |      |      |  End |           | PgDn |      |      |
  *                                  `--------------------'           `--------------------'
  */
@@ -63,26 +63,26 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
             LSFT(KC_INSERT),    KC_1,           KC_2,          KC_3,    KC_4,    KC_5,       LGUI(KC_LEFT),
             KC_TILD,            KC_Q,           KC_W,          KC_E,    KC_R,    KC_T,       OSL(2),
             KC_EQUAL,           KC_A,           KC_S,          KC_D,    KC_F,    SFT_T(KC_G),
-            F(F_SFT_L),         KC_Z,           KC_X,          KC_C,    KC_V,    KC_B,       F(F_SFT_L),
+            F(F_SFT_L),         KC_Z,           KC_X,          KC_C,    KC_V,    KC_B,       KC_TAB,
             KC_LGUI,            LALT(KC_LCTRL), LSFT(KC_LCTRL),KC_LEFT, KC_RIGHT,
 
                                     // left thumb cluster
 
-                               LCTL_T(KC_ESCAPE), LALT_T(KC_TAB),
-                                                         KC_HOME,
-                                    KC_SPACE, KC_BSPACE, KC_END,
+                                      LCTL_T(KC_ESCAPE), LALT_T(KC_TAB),
+                                                                KC_HOME,
+                                    KC_SPACE, LSFT_T(KC_ENTER), KC_END,
 
                                                     // right hand
                                                     RGUI(KC_RIGHT), KC_6,       KC_7,   KC_8,     KC_9,             KC_0,           KC_DELETE,
                                                     OSL(1),         KC_Y,       KC_U,   KC_I,     KC_O,             KC_P,           KC_MINUS,
                                                                     SFT_T(KC_H),KC_J,   KC_K,     KC_L,             KC_SCOLON,      KC_QUOTE,
-                                                    F(F_SFT_L),     KC_N,       KC_M,   KC_COMMA, KC_DOT,           KC_SLASH,       F(F_SFT_L),
+                                                    KC_APPLICATION, KC_N,       KC_M,   KC_COMMA, KC_DOT,           KC_SLASH,       F(F_SFT_L),
                                                                                 KC_DOWN,KC_UP,    RSFT(KC_RCTRL),   RALT(KC_RCTRL), KC_RGUI,
 
                                                                     // right thumb cluster
                                                                     RALT_T(KC_APPLICATION), RCTL_T(KC_ENTER),
                                                                     KC_PGUP,
-                                                                    KC_PGDOWN, KC_ESC, KC_ENTER
+                                                                    KC_PGDOWN, RSFT_T(KC_ESC), KC_BSPACE
         ),
 
 /* Keymap 1: Symbol Layer
