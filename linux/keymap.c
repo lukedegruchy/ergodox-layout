@@ -52,8 +52,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                         ,-------------.           ,-------------.
  *                                         |CT/ESC|ALT/TB|           |ALT/AP|CT/ETR|
  *                                  ,------|------|------|           |------+------+------.
- *                                  |      |SHIFT | Home |           | PgUp |SHIFT |      |
- *                                  |  SPC | ENTR |------|           |------| ESC  | BKSP |
+ *                                  |      |      | Home |           | PgUp |      |      |
+ *                                  |  SPC |SHIFT |------|           |------| ESC  | BKSP |
  *                                  |      |      |  End |           | PgDn |      |      |
  *                                  `--------------------'           `--------------------'
  */
@@ -68,21 +68,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
                                     // left thumb cluster
 
-                                      LCTL_T(KC_ESCAPE), LALT_T(KC_TAB),
-                                                                KC_HOME,
-                                    KC_SPACE, LSFT_T(KC_ENTER), KC_END,
+                                       LCTL_T(KC_ESCAPE), LALT_T(KC_TAB),
+                                                          KC_HOME,
+                                    KC_SPACE, F(F_SFT_L), KC_END,
 
                                                     // right hand
                                                     RGUI(KC_RIGHT), KC_6,       KC_7,   KC_8,     KC_9,             KC_0,           KC_DELETE,
                                                     OSL(1),         KC_Y,       KC_U,   KC_I,     KC_O,             KC_P,           KC_MINUS,
                                                                     SFT_T(KC_H),KC_J,   KC_K,     KC_L,             KC_SCOLON,      KC_QUOTE,
                                                     KC_APPLICATION, KC_N,       KC_M,   KC_COMMA, KC_DOT,           KC_SLASH,       F(F_SFT_L),
-                                                                                KC_DOWN,KC_UP,    RSFT(KC_RCTRL),   RALT(KC_RCTRL), KC_RGUI,
+                                                                                KC_DOWN,KC_UP,    RSFT(KC_RCTRL),   RALT(KC_RCTRL), KC_LGUI,
 
                                                                     // right thumb cluster
                                                                     RALT_T(KC_APPLICATION), RCTL_T(KC_ENTER),
                                                                     KC_PGUP,
-                                                                    KC_PGDOWN, RSFT_T(KC_ESC), KC_BSPACE
+                                                                    KC_PGDOWN, KC_ESCAPE, KC_BSPACE
         ),
 
 /* Keymap 1: Symbol Layer
