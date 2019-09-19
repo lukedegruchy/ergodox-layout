@@ -47,10 +47,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |-----------+------+------+------+------+------|SHIFT |           | SHIFT|------+------+------+------+------+-----------|
  * |    TAB    |   Z  |   X  |   C  |   V  |   B  |      |           |      |   N  |   M  |   ,  |   .  |   /  |   APPS    |
  * `-----------+------+------+------+------+-------------'           `-------------+------+------+------+------+-----------'
- *     |  GUI  |CT+ALT|SF+CTL| Left | Right|                                       | Down |  Up  |SF+CTL|CT+ALT|  GUI  |
+ *     | SF+CTL|CT+ALT| GUI  | Left | Right|                                       | Down |  Up  | GUI  |CT+ALT|SF+CTL |
  *     `-----------------------------------'                                       `-----------------------------------'
  *                                         ,-------------.           ,-------------.
- *                                         | CTRL |ALT/TB|           |ALT/AP| CTRL |
+ *                                         | CTRL | ALT  |           | ALT  | CTRL |
  *                                  ,------|------|------|           |------+------+------.
  *                                  |      |      | Home |           | PgUp |      |      |
  *                                  |  SPC | BKSP |------|           |------| ESC  |ENTER |
@@ -60,15 +60,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [BASE] = LAYOUT_ergodox(
             // left hand
-            KC_BSLASH,  KC_1,           KC_2,          KC_3,    KC_4,    KC_5,       LGUI(KC_LEFT),
-            KC_TILD,    KC_Q,           KC_W,          KC_E,    KC_R,    KC_T,       OSL(2),
-            KC_EQUAL,   KC_A,           KC_S,          KC_D,    KC_F,    SFT_T(KC_G),
-            KC_TAB,     KC_Z,           KC_X,          KC_C,    KC_V,    KC_B,       F(F_SFT_L),
-            KC_LGUI,    LALT(KC_LCTRL), LSFT(KC_LCTRL),KC_LEFT, KC_RIGHT,
+            KC_BSLASH,      KC_1,           KC_2,      KC_3,    KC_4,    KC_5,       LGUI(KC_LEFT),
+            KC_TILD,        KC_Q,           KC_W,      KC_E,    KC_R,    KC_T,       OSL(2),
+            KC_EQUAL,       KC_A,           KC_S,      KC_D,    KC_F,    SFT_T(KC_G),
+            KC_TAB,         KC_Z,           KC_X,      KC_C,    KC_V,    KC_B,       F(F_SFT_L),
+            LSFT(KC_LCTRL), LALT(KC_LCTRL), KC_LGUI,   KC_LEFT, KC_RIGHT,
 
                                     // left thumb cluster
 
-                                               KC_LCTRL, LALT_T(KC_TAB),
+                                               KC_LCTRL, KC_LALT,
                                                          KC_HOME,
                                     KC_SPACE, KC_BSPACE, KC_END,
 
@@ -77,10 +77,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                     OSL(1),         KC_Y,       KC_U,   KC_I,     KC_O,             KC_P,           KC_MINUS,
                                                                     SFT_T(KC_H),KC_J,   KC_K,     KC_L,             KC_SCOLON,      KC_QUOTE,
                                                     F(F_SFT_L),     KC_N,       KC_M,   KC_COMMA, KC_DOT,           KC_SLASH,       KC_APPLICATION,
-                                                                                KC_DOWN,KC_UP,    RSFT(KC_RCTRL),   RALT(KC_RCTRL), KC_LGUI,
+                                                                                KC_DOWN,KC_UP,    KC_LGUI,          RALT(KC_RCTRL), RSFT(KC_RCTRL),
 
                                                                     // right thumb cluster
-                                                                    RALT_T(KC_APPLICATION), KC_RCTRL,
+                                                                    KC_RALT, KC_RCTRL,
                                                                     KC_PGUP,
                                                                     KC_PGDOWN, KC_ESCAPE, KC_ENTER
         ),
@@ -109,7 +109,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [SYMB] = LAYOUT_ergodox(
             // left hand
              KC_NUMLOCK,           KC_F1,          KC_F2,          KC_F3,          KC_F4,      KC_F5,      KC_TRANSPARENT,
-             KC_TRANSPARENTergodox---lukedegruchy's-layout-linux-symbol-layer.png,       KC_GRAVE,       KC_AT,          KC_LCBR,        KC_RCBR,    KC_PIPE,    KC_TRANSPARENT,
+             KC_TRANSPARENT,       KC_GRAVE,       KC_AT,          KC_LCBR,        KC_RCBR,    KC_PIPE,    KC_TRANSPARENT,
              LCTL(KC_INSERT),      KC_HASH,        KC_DLR,         KC_LPRN,        KC_RPRN,    KC_AMPR,
              KC_TRANSPARENT,       KC_PERC,        KC_CIRC,        KC_LBRACKET,    KC_RBRACKET,KC_DQUO,    KC_TRANSPARENT,
              KC_TRANSPARENT,       KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_BSLASH,
