@@ -47,10 +47,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |-----------+------+------+------+------+------|SHIFT |           | SHIFT|------+------+------+------+------+-----------|
  * |    TAB    |   Z  |   X  |   C  |   V  |   B  |      |           |      |   N  |   M  |   ,  |   .  |   /  |   APPS    |
  * `-----------+------+------+------+------+-------------'           `-------------+------+------+------+------+-----------'
- *     | SF+CTL|CT+ALT| GUI  | Left | Right|                                       | Down |  Up  | GUI  |CT+ALT|SF+CTL |
+ *     | RCTRL |CT+ALT| GUI  | Left | Right|                                       | Down |  Up  | GUI  |CT+ALT| RCTRL |
  *     `-----------------------------------'                                       `-----------------------------------'
  *                                         ,-------------.           ,-------------.
- *                                         | CTRL | ALT  |           | ALT  | CTRL |
+ *                                         | LCTRL| LALT |           | LALT |LCTRL |
  *                                  ,------|------|------|           |------+------+------.
  *                                  |      |      | Home |           | PgUp |      |      |
  *                                  |  SPC | BKSP |------|           |------| ESC  |ENTER |
@@ -64,7 +64,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
             KC_TILD,        KC_Q,           KC_W,      KC_E,    KC_R,    KC_T,       OSL(2),
             KC_EQUAL,       KC_A,           KC_S,      KC_D,    KC_F,    SFT_T(KC_G),
             KC_TAB,         KC_Z,           KC_X,      KC_C,    KC_V,    KC_B,       OSM(MOD_LSFT),
-            LSFT(KC_LCTRL), LALT(KC_LCTRL), KC_LGUI,   KC_LEFT, KC_RIGHT,
+            KC_RCTRL, LALT(KC_LCTRL), KC_LGUI,   KC_LEFT, KC_RIGHT,
 
                                     // left thumb cluster
 
@@ -73,14 +73,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                     KC_SPACE, KC_BSPACE, KC_END,
 
                                                     // right hand
-                                                    RGUI(KC_PGDOWN),  KC_6,       KC_7,   KC_8,     KC_9,             KC_0,           KC_DELETE,
-                                                    OSL(1),           KC_Y,       KC_U,   KC_I,     KC_O,             KC_P,           KC_MINUS,
+                                    RGUI(KC_PGDOWN),  KC_6,       KC_7,   KC_8,     KC_9,             KC_0,           KC_DELETE,
+                                    OSL(1),           KC_Y,       KC_U,   KC_I,     KC_O,             KC_P,           KC_MINUS,
                                                                       SFT_T(KC_H),KC_J,   KC_K,     KC_L,             KC_SCOLON,      KC_QUOTE,
                                                     OSM(MOD_LSFT),    KC_N,       KC_M,   KC_COMMA, KC_DOT,           KC_SLASH,       KC_APPLICATION,
-                                                                                  KC_DOWN,KC_UP,    KC_LGUI,          RALT(KC_RCTRL), RSFT(KC_RCTRL),
+                                                                                  KC_DOWN,KC_UP,    KC_LGUI,          RALT(KC_RCTRL), KC_RCTRL,
 
                                                                     // right thumb cluster
-                                                                    KC_RALT, KC_RCTRL,
+                                                                    KC_LALT, KC_LCTRL,
                                                                     KC_PGUP,
                                                                     KC_PGDOWN, KC_ESCAPE, KC_ENTER
         ),
@@ -96,7 +96,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |-----------+------+------+------+------+------|      |           |      |------+------+------+------+------+-----------|
  * |           |   %  |   ^  |   [  |   ]  |   "  |      |           |      |   -  |   1  |   2  |   3  |   /  |           |
  * `-----------+------+------+------+------+-------------'           `-------------+------+------+------+------+-----------'
- *     |       |      |      |      |   \  |                                       |   =  |   0  |   .  |      |       |
+ *     | RALT  |      |      |      |   \  |                                       |   =  |   0  |   .  |      | RALT  |
  *     `-----------------------------------'                                       `-----------------------------------'
  *                                         ,-------------.           ,-------------.
  *                                         |      |      |           |      |      |
@@ -112,7 +112,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
              KC_PSCREEN,           KC_GRAVE,       KC_AT,          KC_LCBR,        KC_RCBR,    KC_PIPE,    KC_TRANSPARENT,
              LCTL(KC_INSERT),      KC_HASH,        KC_DLR,         KC_LPRN,        KC_RPRN,    KC_AMPR,
              KC_TRANSPARENT,       KC_PERC,        KC_CIRC,        KC_LBRACKET,    KC_RBRACKET,KC_DQUO,    KC_TRANSPARENT,
-             KC_TRANSPARENT,       KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_BSLASH,
+             KC_RALT,       KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_BSLASH,
 
                     // left thumb cluster
                     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
@@ -122,7 +122,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                             KC_TRANSPARENT,  KC_ASTR,        KC_KP_7,  KC_KP_8,    KC_KP_9,    KC_AMPR,          KC_F12,
                                              KC_PLUS,        KC_KP_4,  KC_KP_5,    KC_KP_6,    KC_UNDS,          LSFT(KC_INSERT),
                             KC_TRANSPARENT,  KC_MINUS,       KC_KP_1,  KC_KP_2,    KC_KP_3,    KC_SLASH,         KC_TRANSPARENT,
-                                                             KC_EQUAL, KC_KP_0,    KC_KP_DOT,  KC_TRANSPARENT,   KC_TRANSPARENT,
+                                                             KC_EQUAL, KC_KP_0,    KC_KP_DOT,  KC_TRANSPARENT,   KC_RALT,
 
                                             // right thumb cluster
                                             KC_TRANSPARENT, KC_TRANSPARENT,
@@ -133,13 +133,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Keymap 2:
  *
  * ,-----------------------------------------------------.           ,-----------------------------------------------------.
- * | SCROLLOCK |      |      |      |      |      |      |           |      |      |      |      |      |      |   PAUSE   |
+ * |           |      |      |      |      |      |      |           |      |      |      |      |      |      |   PAUSE   |
  * |-----------+------+------+------+------+-------------|           |------+------+------+------+------+------+-----------|
- * |           |      |      |      |      |      |      |           |      | WHUP | WHLT | MSUP | WHRT |      |           |
+ * |           |      |      |      |      |      |      |           |      | WHUP | WHLT | MSUP | WHRT |      | SHFT/PRCN |
  * |-----------+------+------+------+------+------|      |           |      |------+------+------+------+------+-----------|
- * |           |      | RGHT | MDDL | LEFT |      |------|           |------| WHDN | MSLT | MSDN | MSRT |      |           |
+ * |           |      | RGHT | MDDL | LEFT |      |------|           |------| WHDN | MSLT | MSDN | MSRT |      | SF/CT/PR  |
  * |-----------+------+------+------+------+------|      |           |      |------+------+------+------+------+-----------|
- * |           |      | ACCL2| ACCL1| ACCL0|      |      |           |      |      |      |      |      |      |           |
+ * |           |      | ACCL2| ACCL1| ACCL0|      |      |           |      |      |      |      |      |      | SCROLLOCK |
  * `-----------+------+------+------+------+-------------'           `-------------+------+------+------+------+-----------'
  *     |       |      |      |      |      |                                       |      |      |      |      |       |
  *     `-----------------------------------'                                       `-----------------------------------'
@@ -153,7 +153,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
   [MOUS] = LAYOUT_ergodox(
             // left hand
-            KC_SCROLLLOCK,  KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
+            KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
             KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
             KC_TRANSPARENT, KC_TRANSPARENT, KC_MS_BTN2,     KC_MS_BTN3,     KC_MS_BTN1,     KC_TRANSPARENT, 
             KC_TRANSPARENT, KC_TRANSPARENT, KC_MS_ACCEL2,   KC_MS_ACCEL1,   KC_MS_ACCEL0,   KC_TRANSPARENT, KC_TRANSPARENT,
@@ -167,9 +167,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
             // right hand
             KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_PAUSE,
-            KC_TRANSPARENT, KC_MS_WH_UP,    KC_MS_WH_LEFT,  KC_MS_UP,       KC_MS_WH_RIGHT, KC_TRANSPARENT, KC_TRANSPARENT,
-                            KC_MS_WH_DOWN,  KC_MS_LEFT,     KC_MS_DOWN,     KC_MS_RIGHT,    KC_TRANSPARENT, KC_TRANSPARENT,
-            KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
+            KC_TRANSPARENT, KC_MS_WH_UP,    KC_MS_WH_LEFT,  KC_MS_UP,       KC_MS_WH_RIGHT, KC_TRANSPARENT, LSFT(KC_PSCREEN),
+                            KC_MS_WH_DOWN,  KC_MS_LEFT,     KC_MS_DOWN,     KC_MS_RIGHT,    KC_TRANSPARENT, LCTL(LSFT(KC_PSCREEN)),
+            KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_SCROLLLOCK,
                                             KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
 
             // right thumb cluster
@@ -256,7 +256,7 @@ void matrix_scan_user(void) {
 
     if (keyboard_report->mods & MOD_BIT(KC_LSFT) || keyboard_report->mods & MOD_BIT(KC_RSFT) ||
         ((get_oneshot_mods() & MOD_BIT(KC_LSFT) || get_oneshot_mods() & MOD_BIT(KC_RSFT)) && !has_oneshot_mods_timed_out())) {
-            // LUKETODO: play around with brightness
+            // TODO: play around with brightness
       ergodox_right_led_1_set (LED_BRIGHTNESS_HI);
       ergodox_right_led_1_on(); 
     }
