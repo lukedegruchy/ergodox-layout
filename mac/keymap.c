@@ -38,15 +38,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Keymap 0: Base Layer
  *
  * ,-----------------------------------------------------.           ,-----------------------------------------------------.
- * |   PASTE   | 1  ! | 2  @ | 3  # | 4  $ | 5  % |OPT+LT|           |OPT+RT| 6  ^ | 7  & | 8  * | 9  ( | 10 ) |   DEL     |
+ * |     \     | 1  ! | 2  @ | 3  # | 4  $ | 5  % |OPT+LT|           |OPT+RT| 6  ^ | 7  & | 8  * | 9  ( | 10 ) |   DEL     |
  * |-----------+------+------+------+------+-------------|           |------+------+------+------+------+------+-----------|
  * |     ~     |   Q  |   W  |   E  |   R  |   T  |OneSht|           |OneSht|   Y  |   U  |   I  |   O  |   P  |     -     |
  * |-----------+------+------+------+------+------|Mouse |           |Symbl||------+------+------+------+------+-----------|
  * |     =     |   A  |   S  |   D  |   F  |   G  |------|           |------|   H  |   J  |   K  |   L  |   ;  |     '     |
- * |-----------+------+------+------+------+------| TAB  |           | CTRL |------+------+------+------+------+-----------|
- * |   SHIFT   |   Z  |   X  |   C  |   V  |   B  |      |           |  ,   |   N  |   M  |   ,  |   .  |   /  |   SHIFT   |
+ * |-----------+------+------+------+------+------| TAP  |           | TAP  |------+------+------+------+------+-----------|
+ * |   TAB     |   Z  |   X  |   C  |   V  |   B  | LSFT |           | RSFT |   N  |   M  |   ,  |   .  |   /  |   CTRL+,  |
  * `-----------+------+------+------+------+-------------'           `-------------+------+------+------+------+-----------'
- *     |  Opt  |CT+GUI|SF+GUI| Left | Right|                                       | Down |  Up  |SF+GUI|CT+GUI|  Opt  |
+ *     | RCTRL |CT+GUI|  Opt | Left | Right|                                       | Down |  Up  | Opt  |CT+GUI| RCTRL |
  *     `-----------------------------------'                                       `-----------------------------------'
  *                                         ,-------------.           ,-------------.
  *                                         | CTRL |  GUI |           | GUI  | CTRL |
@@ -59,28 +59,28 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [BASE] = LAYOUT_ergodox(
             // left hand
-            KC_PASTE,       KC_1,           KC_2,              KC_3,    KC_4,    KC_5,       LALT(KC_LEFT),
-            KC_TILD,        KC_Q,           KC_W,              KC_E,    KC_R,    KC_T,       OSL(2),
-            KC_EQUAL,       KC_A,           KC_S,              KC_D,    KC_F,    SFT_T(KC_G),
-            F(F_SFT_L),     KC_Z,           KC_X,              KC_C,    KC_V,    KC_B,       KC_TAB,
-            KC_LALT,        LCTL(KC_LGUI),  LSFT(KC_LCTRL),    KC_LEFT, KC_RIGHT,
+            KC_BSLASH,      KC_1,           KC_2,       KC_3,    KC_4,    KC_5,       LALT(KC_LEFT),
+            KC_TILD,        KC_Q,           KC_W,       KC_E,    KC_R,    KC_T,       OSL(2),
+            KC_EQUAL,       KC_A,           KC_S,       KC_D,    KC_F,    SFT_T(KC_G),
+            KC_TAB,         KC_Z,           KC_X,       KC_C,    KC_V,    KC_B,       OSM(MOD_LSFT),
+            KC_RCTRL,       LCTL(KC_LGUI),  KC_LALT,    KC_LEFT, KC_RIGHT,
             
                                     // left thumb cluster
-                                            F(F_CTRL_L), F(F_GUI_L),
+                                               KC_LCTRL, KC_LGUI,
                                                          KC_HOME,
                                     KC_SPACE, KC_BSPACE, KC_END,
 
                                                     // right hand
-                                                    RALT(KC_RIGHT), KC_6,       KC_7,   KC_8,     KC_9,             KC_0,             KC_DELETE,
-                                                    OSL(1),         KC_Y,       KC_U,   KC_I,     KC_O,             KC_P,             KC_MINUS,
-                                                                    SFT_T(KC_H),KC_J,   KC_K,     KC_L,             KC_SCOLON,        KC_QUOTE,
-                                                    RCTL(KC_COMMA), KC_N,       KC_M,   KC_COMMA, KC_DOT,           KC_SLASH,         F(F_SFT_L), 
-                                                                                KC_DOWN,KC_UP,    RSFT(KC_RCTRL),   RCTL(KC_LGUI),    KC_RALT,
+                                                    RALT(KC_RIGHT), KC_6,       KC_7,   KC_8,     KC_9,      KC_0,             KC_DELETE,
+                                                    OSL(1),         KC_Y,       KC_U,   KC_I,     KC_O,      KC_P,             KC_MINUS,
+                                                                    SFT_T(KC_H),KC_J,   KC_K,     KC_L,      KC_SCOLON,        KC_QUOTE,
+                                                    OSM(MOD_LSFT),  KC_N,       KC_M,   KC_COMMA, KC_DOT,    KC_SLASH,         RCTL(KC_COMM), 
+                                                                                KC_DOWN,KC_UP,    KC_RALT,   RCTL(KC_LGUI),    KC_RCTRL,
 
                                                                     // right thumb cluster
-                                                                    F(F_GUI_L), F(F_CTRL_L),
+                                                                    KC_RGUI, KC_RCTRL,
                                                                     KC_PGUP,
-                                                                    KC_PGDOWN, KC_ESC, KC_ENTER
+                                                                    KC_PGDOWN, KC_ESCAPE, KC_ENTER
         ),
 
 /* Keymap 1: Symbol Layer
@@ -97,7 +97,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *     |       |      |      |      |   \  |                                       |   =  |   0  |   .  |      |       |
  *     `-----------------------------------'                                       `-----------------------------------'
  *                                         ,-------------.           ,-------------.
- *                                         |      |      |           |      |RCTRL |
+ *                                         |      |      |           |      |      |
  *                                  ,------|------|------|           |------+------+------.
  *                                  |      |      |      |           |      |      |      |
  *                                  |      |      |------|           |------|      |      |
@@ -106,7 +106,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
   [SYMB] = LAYOUT_ergodox(
             // left hand
-             KC_INSERT,      KC_F1,          KC_F2,          KC_F3,          KC_F4,      KC_F5,      KC_TRANSPARENT,
+             KC_TRANSPARENT, KC_F1,          KC_F2,          KC_F3,          KC_F4,      KC_F5,      KC_TRANSPARENT,
              KC_TRANSPARENT, KC_GRAVE,       KC_AT,          KC_LCBR,        KC_RCBR,    KC_PIPE,    KC_TRANSPARENT,
              KC_TRANSPARENT, KC_HASH,        KC_DLR,         KC_LPRN,        KC_RPRN,    KC_AMPR,
              KC_TRANSPARENT, KC_PERC,        KC_CIRC,        KC_LBRACKET,    KC_RBRACKET,KC_DQUO,    KC_TRANSPARENT,
@@ -125,7 +125,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                             KC_EQUAL, KC_KP_0,    KC_KP_DOT,  KC_TRANSPARENT,   KC_TRANSPARENT,
 
                                             // right thumb cluster
-                                            KC_TRANSPARENT, KC_RCTRL,
+                                            KC_TRANSPARENT, KC_TRANSPARENT,
                                             KC_TRANSPARENT, 
                                             KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT  
             ),
